@@ -21,11 +21,10 @@ nginx['ssl_certificate'] = "{{ gitlab_ssl_certificate }}"
 nginx['ssl_certificate_key'] = "{{ gitlab_ssl_certificate_key }}"
 {% endif %}
 {% if gitlab_redirect_http_to_https == "false" %}
-nginx['redirect_http_to_https'] = {{ gitlab_redirect_http_to_https }}
-nginx['proxy_set_headers'] = {
- "X-Forwarded-Proto" => "http",
- "X-Forwarded-Ssl" => "on"
-}
+nginx['enable'] = false
+gitlab_rails['trusted_proxies'] = [ '127.0.0.1' ]
+gitlab_workhorse['listen_network'] = "tcp"
+gitlab_workhorse['listen_addr'] = "127.0.0.1:8181"
 {% endif %}
 
 
