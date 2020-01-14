@@ -1,8 +1,8 @@
 ---
 - name: "Install GitLab"
   include_tasks: 0_install.yml
-  when: gitlab_remove == 'true'
+  when: gitlab_remove == 'false'
 
 - name: "Remove GitLab"
   include_tasks: 1_remove.yml
-  when: gitlab_remove == 'false'
+  when: gitlab_remove == 'true'
