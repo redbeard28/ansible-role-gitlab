@@ -1,4 +1,5 @@
 ---
+gitlab_remove: 'false'
 # General config.
 gitlab_external_url: "https://gitlab/"
 gitlab_git_data_dir: "/var/opt/gitlab/git-data"

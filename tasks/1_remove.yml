@@ -1,0 +1,16 @@
+---
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Remove Packages"
+  package: name={{ item }} state=absent
+  with_items:
+    - gitlab-ce
+    - gitlab-runner
+
+- name: "{{ ansible_distribution | lower }} | {{ ansible_distribution_release }} - Remove foldes"
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - /etc/gitlab
+    - /etc/gitlab-runner
+    - /var/opt/gitlab/
+    - /run/gitlab
